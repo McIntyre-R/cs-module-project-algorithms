@@ -4,8 +4,19 @@ Returns: a List of integers
 '''
 def sliding_window_max(nums, k):
     # Your code here
+  big = []
+  big_num = 'start'
+  arr_slice = nums[k-k:k]
+  for e in arr_slice:
+    if big_num == 'start':
+        big_num = e
+    elif e > big_num:
+        big_num = e
+  big.append(big_num)
+  if k < len(nums):
+    big += sliding_window_max(nums[1:],k)
+  return big
 
-    pass
 
 
 if __name__ == '__main__':
